@@ -12,7 +12,7 @@ const state = {
   timer: '', // 定时器
   itemDetail: [{
     'topic_id': 20,
-    'active_topic_id': 4,
+    'active_topic_id': 1,
     'type': 'ONE',
     'topic_name': '题目一',
     'active_id': 1,
@@ -43,7 +43,7 @@ const state = {
     }]
   }, {
     'topic_id': 21,
-    'active_topic_id': 4,
+    'active_topic_id': 2,
     'type': 'MORE',
     'topic_name': '题目二',
     'active_id': 1,
@@ -74,7 +74,7 @@ const state = {
     }]
   }, {
     'topic_id': 21,
-    'active_topic_id': 4,
+    'active_topic_id': 3,
     'type': 'MORE',
     'topic_name': '题目三',
     'active_id': 1,

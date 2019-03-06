@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ItemContainer from '../../components/ItemContainer'
+import ItemContainer from '@/components/ItemContainer'
 export default {
   data () {
     return {

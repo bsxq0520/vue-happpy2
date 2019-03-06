@@ -10,18 +10,18 @@
     </div>
     <div v-if="fatherComponent ==='item'">
       <div class="item_back item_container_style">
-        <div class="item_list_container" v-if="itemDetail.length">
-          <header class="item_title">{{itemDetail[itemNum-1].topic_name}}</header>
-          <ul>
-            <li class="item_list"
-            v-for="(item,index) in itemDetail[itemNum-1].topic_answer"
-            :key="item.active_topic_id"
-            @click="choosed(index,item.topic_answer_id)">
-              <span class="option_style" :class="{'has_choosed': choosedNum === index}">{{chooseType(index)}}</span>
-              <span class="option_detail">{{item.answer_name}}</span>
-            </li>
-          </ul>
-        </div>
+          <div class="item_list_container" v-if="itemDetail.length">
+            <header class="item_title">{{itemDetail[itemNum-1].topic_name}}</header>
+              <transition-group name="list-complete" tag="ul">
+                <li class="item_list list-complete-item"
+                v-for="(item,index) in itemDetail[itemNum-1].topic_answer"
+                v-bind:key="item.topic_answer_id"
+                @click="choosed(index,item.topic_answer_id)">
+                  <span class="option_style" :class="{'has_choosed': choosedNum === index}">{{chooseType(index)}}</span>
+                  <span class="option_detail">{{item.answer_name}}</span>
+                </li>
+              </transition-group>
+          </div>
       </div>
       <span class="next_item button_style" @click="nextItem" v-if="itemNum < itemDetail.length"></span>
       <span class="submit_item button_style" v-else @click="submitAnswer"></span>
@@ -197,4 +197,21 @@ export default {
     padding-top: 0.11rem;
   }
 }
+
+.list-complete-item {
+  transition: all 1s;
+  // display: inline-block;
+  // margin-right: 10px;
+  position: relative;
+}
+.list-complete-enter, .list-complete-leave-to
+/* .list-complete-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translate3d(30px,40px,30px);
+  transform-origin: 100%;
+}
+.list-complete-leave-active {
+  position: absolute;
+}
+
 </style>
